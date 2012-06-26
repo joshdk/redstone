@@ -4,5 +4,11 @@
 echo "redstone: $REDSTONE_SERVER_NAME: Starting server"
 
 screen -dmS "$REDSTONE_SESSION_NAME" -p 0
-
 screen -x "$REDSTONE_SESSION_NAME" -p 0 -X title 'server'
+
+if [ -e "$REDSTONE_SERVER_DIR/actions/start" ]; then
+	redstone-command "$REDSTONE_SERVER_DIR/actions/start"
+else
+	echo "redstone: start: No such action" 1>&2
+	exit 1
+fi
