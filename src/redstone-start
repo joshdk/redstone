@@ -1,8 +1,8 @@
 #!/bin/sh
 
 
-echo "redstone: $SERVER_NAME: Starting server"
+echo "redstone: $REDSTONE_SERVER_NAME: Starting server"
 
-screen -dmS "$SESSION_NAME" -p 0
+screen -dmS "$REDSTONE_SESSION_NAME" -p 0
 
-screen -x "$SESSION_NAME" -p 0 -X title 'server'
+screen -x "$REDSTONE_SESSION_NAME" -p 0 -X title 'server'
