@@ -1,0 +1,45 @@
+#!/bin/bash
+
+
+COMMAND="$1"
+shift
+
+export SERVER_NAME="$1"
+shift
+
+export SESSION_NAME="redstone-$SERVER_NAME"
+
+
+if [ -e "./$SERVER_NAME.conf" ]; then
+	source "./$SERVER_NAME.conf"
+else
+	echo "redstone: $SERVER_NAME: No such server config"
+	exit 1
+fi
+
+
+case "$COMMAND" in
+	'start' )
+		redstone-start "$@"
+		;;
+
+	'stop' )
+		redstone-stop "$@"
+		;;
+
+	'restart' )
+		redstone-restart "$@"
+		;;
+
+	'status' )
+		redstone-status "$@"
+		;;
+
+	'command' )
+		redstone-command "$@"
+		;;
+
+	* )
+		echo 'redstone: $COMMAND: No such command'
+		;;
+esac

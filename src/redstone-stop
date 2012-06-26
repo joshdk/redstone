@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+echo "redstone: $SERVER_NAME: Stopping server"
+
+redstone-command 'save-off'
+redstone-command 'save-all'
+redstone-command 'stop'
+redstone-command 'exit'
