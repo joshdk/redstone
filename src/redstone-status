@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+if [ -e "$REDSTONE_SERVER_DIR/server.log.lck" ]; then
+	echo "$REDSTONE_SERVER_NAME\t [running]"
+else
+	echo "$REDSTONE_SERVER_NAME\t [stopped]"
+fi
