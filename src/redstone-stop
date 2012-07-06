@@ -19,4 +19,4 @@ while [ true ]; do
 	sleep 0.5
 done
 
-redstone-command 'exit'
+screen -S "$REDSTONE_SESSION_NAME" -X quit
