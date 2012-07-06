@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+if [ ! -e "$REDSTONE_SERVER_DIR/server.log.lck" ]; then
+	echo "redstone: $REDSTONE_SERVER_NAME: Server is already stopped" 1>&2
+	exit 1
+fi
+
+echo "redstone: $REDSTONE_SERVER_NAME: Stopping server"
+
+redstone-command 'save-off'
+redstone-command 'save-all'
+redstone-command 'stop'
+
+while [ true ]; do
+	if [ ! -e "$REDSTONE_SERVER_DIR/server.log.lck" ]; then
+		break
+	fi
+	sleep 0.5
+done
+
+screen -S "$REDSTONE_SESSION_NAME" -X quit

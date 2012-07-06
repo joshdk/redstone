@@ -1,0 +1,63 @@
+#!/bin/bash
+
+
+REDSTONE_CONF_DIR='/etc/redstone'
+
+
+if [ -z "$1" ]
+then
+	echo "redstone: No command given" 1>&2
+	exit 1
+fi
+COMMAND="$1"
+shift
+
+if [ -z "$1" ]
+then
+	echo "redstone: No server given" 1>&2
+	exit 1
+fi
+export REDSTONE_SERVER_NAME="$1"
+shift
+
+
+export REDSTONE_SESSION_NAME="redstone-$REDSTONE_SERVER_NAME"
+
+
+if [ -e "$REDSTONE_CONF_DIR/$REDSTONE_SERVER_NAME.conf" ]; then
+	source "$REDSTONE_CONF_DIR/$REDSTONE_SERVER_NAME.conf"
+else
+	echo "redstone: $REDSTONE_SERVER_NAME: No such server" 1>&2
+	exit 1
+fi
+
+
+case "$COMMAND" in
+	'start' )
+		redstone-start "$@"
+		;;
+
+	'stop' )
+		redstone-stop "$@"
+		;;
+
+	'restart' )
+		redstone-restart "$@"
+		;;
+
+	'status' )
+		redstone-status "$@"
+		;;
+
+	'command' )
+		redstone-command "$@"
+		;;
+
+	'shell' )
+		redstone-shell "$@"
+		;;
+
+	* )
+		echo "redstone: $COMMAND: No such command" 1>&2
+		;;
+esac

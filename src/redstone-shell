@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+screen -dr "$REDSTONE_SESSION_NAME"

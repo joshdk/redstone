@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+CMD=$(echo -e "$@\r")
+
+screen -x "$REDSTONE_SESSION_NAME" -p 'server' -X stuff "$CMD"
