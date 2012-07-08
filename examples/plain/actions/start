@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd "$REDSTONE_SERVER_DIR"
+java -jar minecraft_server.jar nogui
