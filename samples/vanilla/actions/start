@@ -1,0 +1,5 @@
+#!/bin/sh
+
+
+cd "$REDSTONE_SERVER_DIR"
+java -jar -Xmx1024M -Xms1024M minecraft_server.jar nogui
